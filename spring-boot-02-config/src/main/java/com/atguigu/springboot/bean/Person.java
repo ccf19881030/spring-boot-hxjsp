@@ -1,6 +1,7 @@
 package com.atguigu.springboot.bean;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -15,8 +16,11 @@ import java.util.Map;
  * 只有这个组件是容器中的组件，才能容器提供的@ConfigurationProperties功能；
  *  @ConfigurationProperties(prefix = "person")默认从全局配置文件中获取值；
  *
+ *  @PropertySource 此注解随便标到某个组件下，全局都可以用了
+ *
  */
 @Component
+@PropertySource(value = {"classpath:person.properties"})    //优先级没有默认的高，所以使用person.properties文件独有属性时好用
 //@ConfigurationProperties(prefix = "person")
 public class Person {
 
@@ -27,7 +31,7 @@ public class Person {
      */
 
     //使用@Value时、此处值需和配置文件中完全相同
-    @Value("${person.last-name}")
+    @Value("${person.last-name2}")
     private String lastName;
 
     @Value("#{11*2}")
