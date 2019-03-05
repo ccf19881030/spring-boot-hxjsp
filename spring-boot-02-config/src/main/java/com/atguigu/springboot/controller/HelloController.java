@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    /**
+     * 测试使用@Value注解
+     */
     @Value("${person.last-name}")
     private String name;
 

@@ -1,10 +1,8 @@
 package com.atguigu.springboot.bean;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +17,7 @@ import java.util.Map;
  *
  */
 @Component
-@ConfigurationProperties(prefix = "person")
-@Validated
+//@ConfigurationProperties(prefix = "person")
 public class Person {
 
     /**
@@ -29,19 +26,26 @@ public class Person {
      * <bean/>
      */
 
-    @Email
+    //使用@Value时、此处值需和配置文件中完全相同
+    @Value("${person.last-name}")
     private String lastName;
 
+    @Value("#{11*2}")
     private Integer age;
 
+    @Value("true")
     private Boolean boss;
 
+    @Value("${person.birth}")
     private Date birth;
 
+    //@Value("${person.maps}")  @Value不支持复杂类型封装
     private Map<String,Object> maps;
 
+    @Value("${person.lists}")
     private List<Object> lists;
 
+    //@Value("${person.dog}")   @Value不支持复杂类型封装
     private Dog dog;
 
     @Override
