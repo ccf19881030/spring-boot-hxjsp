@@ -13,6 +13,7 @@ public class SpringBoot03LoggingApplicationTests {
 
 	//记录器
 	Logger logger = LoggerFactory.getLogger(getClass());
+
 	@Test
 	public void contextLoads() {
 		//System.out.println();
