@@ -8,25 +8,25 @@
 
 <h1>成功！</h1>
 
-<!-- th重写标签原始属性 -->
+<!--th重写标签原始属性 -->
 
-<!-- 不转义html标签 两种写法 -->
+<!--不转义html标签 两种写法-->
 <div th:text="${hello}"></div>
 <div>[[${hello}]]</div>
 
-<!-- 转义html标签 两种写法 -->
+<!--转义html标签 两种写法-->
 <div th:utext="${hello}"></div>
 <div>[(${hello})]</div>
 
 <hr/>
 
-<!-- th:each每次遍历都会生成当前这个标签： 3个h4 -->
+<!--th:each每次遍历都会生成当前这个标签：3个h4-->
 <h4 th:text="${user}"  th:each="user:${users}"></h4>
 
 <hr/>
 
 <h4>
-<!-- 3个span -->
+<!--3个span-->
     <span th:each="user:${users}"> [[${user}]] </span>
 </h4>
 

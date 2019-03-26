@@ -68,15 +68,20 @@
 								</tr>
 							</thead>
 							<tbody>
+							    <!--遍历list类型的变量-->
 								<tr th:each="emp:${emps}">
 									<td th:text="${emp.id}"></td>
 									<td>[[${emp.lastName}]]</td>
 									<td th:text="${emp.email}"></td>
+									<!--三元运算符括号外判断更好-->
 									<td th:text="${emp.gender}==0?'女':'男'"></td>
 									<td th:text="${emp.department.departmentName}"></td>
+                                    <!--#dates工具类格式化日期-->
 									<td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td>
 									<td>
+									    <!--链接中变量与字符串的拼接写法-->
 										<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
+										<!--自定义标签属性-->
 										<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>
 									</td>
 								</tr>
@@ -102,6 +107,7 @@
 		<script>
 			feather.replace()
 		</script>
+		<!--jquery使用自定义属性提交表单-->
 		<script>
 			$(".deleteBtn").click(function(){
 			    //删除当前员工的

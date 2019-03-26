@@ -6,6 +6,7 @@
 </head>
 <body>
 <!--topbar-->
+<!--使用 th:fragment 抽取公共片段-->
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">[[${session.loginUser}]]</a>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
@@ -17,10 +18,12 @@
 </nav>
 
 <!--sidebar-->
+<!--使用 id 抽取公共片段-->
 <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="sidebar">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
+            <!--使用变量参数activeUri-->
                 <a class="nav-link active"
                    th:class="${activeUri=='main.html'?'nav-link active':'nav-link'}"
                    href="#" th:href="@{/main.html}">
