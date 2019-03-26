@@ -107,14 +107,14 @@ public class ReAutoConfig {
     }
 
     /**
-     *
+     * 注意！！重写这个可能使spring.mvc.date-format=yyyy-MM-dd 失效
      */
-    @Bean
-    public ConfigurableWebBindingInitializer myConfigurableWebBindingInitializer() {
-        return new ConfigurableWebBindingInitializer() {
-
-        };
-    }
+//    @Bean
+//    public ConfigurableWebBindingInitializer myConfigurableWebBindingInitializer() {
+//        return new ConfigurableWebBindingInitializer() {
+//
+//        };
+//    }
 
 
 }
