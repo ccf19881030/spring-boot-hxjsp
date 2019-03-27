@@ -3,9 +3,12 @@ package com.atguigu.springboot.config;
 import com.atguigu.springboot.filter.MyFilter;
 import com.atguigu.springboot.listener.MyListener;
 import com.atguigu.springboot.servlet.MyServlet;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,6 +37,20 @@ public class MyServerConfig {
     public ServletListenerRegistrationBean myListener(){
         ServletListenerRegistrationBean<MyListener> registrationBean = new ServletListenerRegistrationBean<>(new MyListener());
         return registrationBean;
+    }
+
+    //配置嵌入式的Servlet容器
+    @Bean
+    public ServletWebServerFactoryCustomizer embeddedServletContainerCustomizer(ServerProperties serverProperties){
+        serverProperties.setPort(8088);
+        return new ServletWebServerFactoryCustomizer(serverProperties) {
+            //定制嵌入式的Servlet容器相关的规则
+            @Override
+            public void customize(ConfigurableServletWebServerFactory factory) {
+                super.customize(factory);
+                serverProperties.setPort(8088);
+            }
+        };
     }
 
 }
