@@ -48,9 +48,10 @@ public class MyMvcConfig implements WebMvcConfigurer {
         //静态资源；  *.css , *.js
         //1.5版本SpringBoot已经做好了静态资源映射
         //2.0版本要自己排除
-        registry.addInterceptor(new LoginHandlerInterceptor())
-                .addPathPatterns("/**") //拦截全部路径请求
-                .excludePathPatterns("/index.html", "/", "/user/login", "/public/**", "/asserts/**","/webjars/**");        //手动排除静态资源路径
+//        registry.addInterceptor(new LoginHandlerInterceptor())
+//                .addPathPatterns("/**") //拦截全部路径请求
+//                .excludePathPatterns("/index.html", "/", "/user/login", "/public/**", "/asserts/**","/webjars/**");        //手动排除静态资源路径
+//        去掉以测试浏览器访问返回错误页面、客户端访问返回json
     }
 
     /**
